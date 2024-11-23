@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Remove BG</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    .container{
+        width:100%;
+        height:100vh;
+        display: flex;
+        align-items: center;
+
+        background: #f3fbff;
+    }
+    .img_box{
+      width:60%;
+      margin:auto;
+      line-height:0;
+      background-image: url("bg.jpg");
+      overflow: hidden;
+      position: relative;
+    }
+    .img_wrap{
+      position: absolute;
+      left:0;
+      top:0;
+      overflow: hidden;
+      width:20px
+    }
+  </style>
+</head>
+<body>
+   
+<div class="container">
+  <div class="img_box">
+    <img src="transparent.png" alt="" width="100%">
+    <div class="img_wrap">
+      <img src="car.jpg" alt="" width="100%" id="originalImg">
+    </div>
+  </div>
+
+</div>
+
+<script>
+  var img_box = document.querySelector(".img_box");
+  var img_wrap = document.querySelector(".img_wrap");
+  var originalImg = document.getElementById("originalImg");
+  originalImg.style.width = img_box.offsetWidth + "px";
+
+  var leftspace = img_box.offsetLeft;
+
+  img_box.onmousemove= function(e){
+
+    var boxWidth = (e.pageX - leftspace) + "px";
+  
+    img_wrap.style.width = boxWidth;
+
+  }
+
+</script>
+</body>
+</html>
